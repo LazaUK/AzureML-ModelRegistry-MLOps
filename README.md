@@ -18,6 +18,7 @@ This repo provides Jupyter notebook and required MLFlow model components to demo
 pip install --upgrade azure-ai-ml azure-identity
 ```
 2. Add required variables to specify Azure subscription, ML workspace and registry details:
+
 | Variable | Description |
 | --- | --- |
 | ```subscription_id``` | Azure subscription ID |
@@ -30,7 +31,30 @@ pip install --upgrade azure-ai-ml azure-identity
 | ```model_name``` | model name |
 | ```model_path``` | model path |
 | ```model_version``` | model version |
-3. 
+
+3. Authenticate to your Azure resources. *DefaultAzureCredential* should cover most of the authentication scenarios, with fallback option of interactive authentication in a browser through *InteractiveBrowserCredential*:
+``` Python
+try:
+    credential = DefaultAzureCredential()
+    credential.get_token("https://management.azure.com/.default")
+except Exception as ex:
+    credential = InteractiveBrowserCredential()
+```
+4. Connect to your registry and each Azure ML workspace:
+``` Python
+ml_client_registry = MLClient(
+    credential = credential,
+    registry_name = aml_registry_name,
+    registry_location = aml_registry_location
+)
+
+ml_client_workspace = MLClient(
+    credential = credential,
+    subscription_id = subscription_id,
+    resource_group_name = aml_workspace_rg,
+    workspace_name = aml_workspace_name
+)
+```
 
 ## Scenario 1: Direct model registration
 
