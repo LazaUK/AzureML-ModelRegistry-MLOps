@@ -74,7 +74,7 @@ ml_client_registry.models.create_or_update(mlflow_model)
 ```
 3. If successful, you should find your model in the registry's artifacts list:
 ![AML_Registry_Direct](images/aml_registry_direct.png)
-> [!NOTE]
+> [!WARNING]
 > Attempts to re-register model with the same name and version will fail.
 
 ## Scenario 2: Workspace-to-Registry model sharing
