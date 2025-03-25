@@ -8,21 +8,30 @@ This repo provides Jupyter notebooks and required MLFlow model components to dem
 > MLFlow model used in this demo was borrowed from Microsoft's [Azure Machine Learning examples](https://github.com/Azure/azureml-examples) repo.
 
 ## Table of contents:
-- [Configuring environment]()
-- [Scenario 1: Direct model registration]()
-- [Scenario 2: Workspace-to-Registry model sharing]()
+- [Configuring environment](#configuring-environment)
+- [Scenario 1: Direct model registration](#scenario-1-direct-model-registration)
+- [Scenario 2: Workspace-to-Registry model sharing](#scenario-2-workspace-to-registry-model-sharing)
 
 ## Configuring environment
-1. 
+
+1. Install the required Azure ML SDK and identity packages:
 ``` PowerShell
 pip install --upgrade azure-ai-ml azure-identity
 ```
-2. Add other environment variables to enable specific UI Demo Kit capabilities:
+2. Add required variables to specify Azure subscription, ML workspace and registry details:
 
-| Environment Variable | Description | Scenario |
-| --- | --- | --- |
-| ```AZURE_FOUNDRY_GPT_MODEL``` | Deployment name of the **_Azure OpenAI_** GPT model | * |
-| ```AZURE_FOUNDRY_BING_SEARCH``` | Connection name of the **_Bing Search_** resource, as described [here](https://learn.microsoft.com/en-us/azure/ai-services/agents/how-to/tools/bing-grounding) | Grounding with Bing Search |
+| Variable | Description |
+| --- | --- |
+| ```subscription_id``` | Azure subscription ID |
+| ```aml_staging_name``` | AML staging workspace name |
+| ```aml_staging_rg``` | AML staging resource group name |
+| ```aml_production_name``` | AML production workspace name |
+| ```aml_production_rg``` | AML production resource group name |
+| ```aml_registry_name``` | AML registry name |
+| ```aml_registry_location``` | AML registry location |
+| ```model_name``` | model name |
+| ```model_path``` | model path |
+| ```model_version``` | model version |
 
 ## Scenario 1: Direct model registration
 
