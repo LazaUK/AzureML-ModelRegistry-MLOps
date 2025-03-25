@@ -2,7 +2,7 @@
 
 Azure ML registry supports MLOps process in Azure ML environment, providing centralised repository for management and sharing of ML models, components and other artifacts across various workspaces.
 
-This repo provides Jupyter notebooks and required MLFlow model components to demo the process of sharing ML models between Staging and Production workspaces.
+This repo provides Jupyter notebook and required MLFlow model components to demo the process of sharing ML models between Staging and Production workspaces.
 
 > [!NOTE]
 > MLFlow model used in this demo was borrowed from Microsoft's [Azure Machine Learning examples](https://github.com/Azure/azureml-examples) repo.
@@ -13,13 +13,11 @@ This repo provides Jupyter notebooks and required MLFlow model components to dem
 - [Scenario 2: Workspace-to-Registry model sharing](#scenario-2-workspace-to-registry-model-sharing)
 
 ## Configuring environment
-
-1. Install the required Azure ML SDK and identity packages:
+1. Install Azure ML SDK and Azure Identity Python packages:
 ``` PowerShell
 pip install --upgrade azure-ai-ml azure-identity
 ```
 2. Add required variables to specify Azure subscription, ML workspace and registry details:
-
 | Variable | Description |
 | --- | --- |
 | ```subscription_id``` | Azure subscription ID |
@@ -32,6 +30,7 @@ pip install --upgrade azure-ai-ml azure-identity
 | ```model_name``` | model name |
 | ```model_path``` | model path |
 | ```model_version``` | model version |
+3. 
 
 ## Scenario 1: Direct model registration
 
