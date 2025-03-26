@@ -58,7 +58,7 @@ ml_client_workspace = MLClient(
 
 ## Scenario 1: Direct model registration
 This scenario demonstrates how to register an MLFlow model directly into the Azure ML registry from a workspace.
-1. Initialise Model class with details of your trained model. This repo uses local version of MLFlow model, while you can adjust the code to refer to ML model trained in Azure ML:
+1. Initialise *Model* class with details of your trained model. This repo uses local version of MLFlow model, while you can adjust the code to refer to ML model trained in Azure ML:
 ``` Python
 mlflow_model = Model(
     path = model_path,
