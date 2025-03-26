@@ -79,3 +79,37 @@ ml_client_registry.models.create_or_update(mlflow_model)
 
 ## Scenario 2: Workspace-to-Registry model sharing
 This scenario showcases the process of sharing an MLFlow model from a Staging workspace to a Production workspace via the Azure ML registry.
+1. If you registered your model in one of Azure ML workspaces, e.g. *Staging*, you can share it with centralised registry.
+![AML_Workspace_Staging](images/aml_workspace_staging.png)
+2. Sharing process allows you to change model's name and version to align with internal MLOps processes:
+``` Python
+ml_client_staging.models.share(
+    name = model_name,
+    version = model_version,
+    registry_name = aml_registry_name,
+    share_with_name = registry_model_name,
+    share_with_version = registry_model_version
+)
+```
+> [!WARNING]
+> Attempts to re-register model with the same name and version will fail.
+3. Retrieve the shared model's object, using Azure ML registry's instance:
+``` Python
+shared_model = ml_client_registry.models.get(
+    name = model_name,
+    version = model_version
+)
+```
+4. You can deploy it in the target Azure ML workspace, e.g. *Production* online endpoint:
+![AML_Endpoint_Prod](images/aml_endpoint_prod.png)
+``` Python
+model_deployment = ManagedOnlineDeployment(
+    name = model_name,
+    endpoint_name = online_endpoint_name,
+    model = shared_model,
+    instance_type = instance_type,
+    instance_count = 1
+)
+```
+5. Adjust the traffic values of your model's deployment:
+![AML_Workspace_Prod](images/aml_workspace_prod.png)
